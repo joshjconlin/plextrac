@@ -1,0 +1,39 @@
+{
+  "name": "plextrac",
+  "version": "1.0.0",
+  "description": "Simple weather application",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js -e js,pug",
+    "test": "lab -c -L -C -l -v --threshold 95 --assert code",
+    "test-cover": "lab -c -L --assert code -r html -o ./test/artifacts/coverage.html && open ./test/artifacts/coverage.html",
+    "build": "yarn && cd client && yarn && yarn build"
+  },
+  "author": "Josh Conlin",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "dependencies": {
+    "confidence": "3.x.x",
+    "glue": "5.0.0",
+    "good": "8.1.1",
+    "good-console": "7.1.0",
+    "good-squeeze": "5.1.0",
+    "hapi": "18.1.0",
+    "hoek": "5.0.4",
+    "inert": "5.1.0",
+    "joi": "14.3.1",
+    "lout": "^11.2.3",
+    "mongoose": "5.7.1",
+    "pug": "2.0.3",
+    "vision": "5.4.0",
+    "visionary": "6.x.x"
+  },
+  "devDependencies": {
+    "code": "5.2.0",
+    "lab": "18.0.2",
+    "nodemon": "1.18.3",
+    "eslint-config-airbnb": "18.0.1"
+  }
+}
