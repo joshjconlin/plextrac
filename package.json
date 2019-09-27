@@ -7,7 +7,8 @@
     "start": "nodemon server.js -e js,pug",
     "test": "lab -c -L -C -l -v --threshold 95 --assert code",
     "test-cover": "lab -c -L --assert code -r html -o ./test/artifacts/coverage.html && open ./test/artifacts/coverage.html",
-    "build": "yarn && cd client && yarn && yarn build"
+    "build": "yarn && cd client && yarn && yarn build",
+    "build-client": "cd client && yarn build"
   },
   "author": "Josh Conlin",
   "license": "MIT",
@@ -34,6 +35,9 @@
     "code": "5.2.0",
     "lab": "18.0.2",
     "nodemon": "1.18.3",
-    "eslint-config-airbnb": "18.0.1"
+    "eslint-config-airbnb": "18.0.1",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-react": "7.14.3",
+    "eslint-plugin-import": "2.18.2"
   }
 }
