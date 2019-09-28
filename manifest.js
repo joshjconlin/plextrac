@@ -15,7 +15,8 @@ const manifest = {
             request: ['error']
         },
         routes: {
-            security: true
+            security: true,
+            cors: true,
         },
         port: Config.get('/port/web')
     },
@@ -55,7 +56,7 @@ const manifest = {
                 }
             },
             {
-                plugin : 'lout',
+                plugin: 'lout',
                 options: {
                     endpoint: '/docs',
                     apiVersion: '1.0.0'

@@ -1,17 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Fragment } from 'react';
 import './App.css';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
+import { Route } from "react-router-dom";
+import {connect} from "react-redux";
+import Login from "./Components/Login";
+import TopBar from "./Components/TopBar";
+import Register from "./Components/Register";
+import Home from "./Components/Home";
 
-function App() {
+const App = (props) => {
+  if (!props.authenticated) {
+      return (
+          <Fragment>
+              <TopBar />
+              <Route path="/" exact component={Login} />
+              <Route path="/register" exact component={Register} />
+          </Fragment>
+      );
+  }
   return (
-    <Paper>
-      <Typography variant="h1">
-        Weather Page
-      </Typography>
-    </Paper>
+    <Fragment>
+        <TopBar />
+        <Route path="/" component={Home} />
+    </Fragment>
   );
-}
+};
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+      authenticated: state.authReducer.authenticated
+  }
+};
+
+export default connect(mapStateToProps)(App);

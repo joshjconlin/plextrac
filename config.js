@@ -19,6 +19,8 @@ const config = {
         },
     },
     mongo: "mongodb://localhost/plextrac",
+    secret: "supersecuresecret",
+    apiKey: "620d2153191e66ac1a101a72315f1754"
 };
 
 
