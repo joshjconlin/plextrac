@@ -42,15 +42,15 @@ class UserRepository {
                     {email: user.email},
                 ]
             }, (err, $user) => {
-                if (err) {
-                    reject(err);
+                if (err || !$user) {
+                    reject(err ? err: 'Invalid Credentials');
                 } else {
                     bcrypt.compare(password, $user.password, (err, isValid) => {
                         if (isValid) {
                             delete $user.password;
                             resolve($user);
                         } else {
-                            reject('Invalid Password');
+                            reject('Invalid Credentials');
                         }
                     });
                 }

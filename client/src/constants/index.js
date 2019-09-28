@@ -8,5 +8,6 @@ const createActionTypes = (str) => {
 
 export const AUTHENTICATION = createActionTypes('AUTHENTICATION');
 export const REGISTER = createActionTypes('REGISTER');
+export const LOGOUT = createActionTypes('LOGOUT');
 
 export const GET_WEATHER = createActionTypes('GET_WEATHER');

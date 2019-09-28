@@ -19,7 +19,7 @@ const App = (props) => {
   }
   return (
     <Fragment>
-        <TopBar />
+        <TopBar isAuthenticated />
         <Route path="/" component={Home} />
     </Fragment>
   );

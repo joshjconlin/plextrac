@@ -4,18 +4,28 @@ import {getWeather} from "../actions/weather";
 import {Container, makeStyles} from "@material-ui/core";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Typography from "@material-ui/core/Typography";
-import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import Card from "@material-ui/core/Card";
+import Divider from "@material-ui/core/Divider";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles(theme => ({
     pageRoot: {
         display: 'flex',
         flex: 1,
         height: window.innerHeight - 120,
-        justifyContent: 'center',
-        alignItems: 'flex-start',
+        flexDirection: 'column',
     },
+    topDivider: {
+        marginTop: theme.spacing(2),
+        marginBottom: theme.spacing(2)
+    },
+    welcome: {
+        marginTop: theme.spacing(2),
+    },
+    outerGrid: {
+        width: '100%',
+    }
 }));
 
 const Home = (props) => {
@@ -36,7 +46,7 @@ const Home = (props) => {
     if (loading || !Object.keys(weather).length) {
         return (
             <Container className={classes.pageRoot}>
-                <CircularProgress size="large"/>
+                <CircularProgress size="small"/>
             </Container>
         );
     }
@@ -52,34 +62,49 @@ const Home = (props) => {
     // sys: {type: 1, id: 4829, message: 0.0085, country: "US", sunrise: 1569591536, …}
     // timezone: -21600
     // visibility: 16093
-    // weather: [{…}]
+    // weather: [{…}] weather: Array(1)
+    // 0:
+    // description: "clear sky"
+    // icon: "01n"
+    // id: 800
+    // main: "Clear"
     // wind: {speed: 2.23, deg: 284.665}
     return (
         <Container className={classes.pageRoot}>
-            <Typography variant="h4" align="center">
+            <Typography variant="h4" align="center" className={classes.welcome}>
                 Welcome {props.user.firstName} {props.user.lastName}
             </Typography>
+            <Divider className={classes.topDivider}/>
             <Card>
-                <Typography>
+                <Typography align="center" variant="h5">
                     {weather.name} Weather
                 </Typography>
-                <CardContent>
-                    <Typography>
-                        Current Temperature: {weather.main.temp}K
-                    </Typography>
-                    <Typography>
-                        Low Temp: {weather.main.temp_min}K
-                    </Typography>
-                    <Typography>
-                        High Temp: {weather.main.temp_max}K
-                    </Typography>
-                    <Typography>
-                        Pressure: {weather.main.pressure} mm/Hg
-                    </Typography>
-                    <Typography>
-                        Humidity: {weather.main.humidity}%
-                    </Typography>
-                </CardContent>
+                <Grid container spacing={2} className={classes.outerGrid}>
+                    <CardContent>
+                        <Grid item xs={4}>
+                            <Typography>
+                                Current Temperature: {weather.main.temp}K
+                            </Typography>
+                            <Typography>
+                                Low Temp: {weather.main.temp_min}K
+                            </Typography>
+                            <Typography>
+                                High Temp: {weather.main.temp_max}K
+                            </Typography>
+                            <Typography>
+                                Pressure: {weather.main.pressure} mm/Hg
+                            </Typography>
+                            <Typography>
+                                Humidity: {weather.main.humidity}%
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={4}>
+                            <Typography>
+                                General Conditions: {weather.weather[0] ? weather.weather[0].description : 'Unknown'}
+                            </Typography>
+                        </Grid>
+                    </CardContent>
+                </Grid>
             </Card>
         </Container>
     );

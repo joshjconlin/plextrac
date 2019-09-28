@@ -1,7 +1,6 @@
 import React from 'react';
 import {authenticate} from "../actions/auth";
 import {connect} from "react-redux";
-import Paper from '@material-ui/core/Paper';
 import Typography from "@material-ui/core/Typography";
 import Container from '@material-ui/core/Container'
 import {makeStyles} from '@material-ui/core/styles';
@@ -64,6 +63,19 @@ const Login = (props) => {
         showPassword: false,
     });
 
+    React.useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === 'Enter' && e.shiftKey === false) {
+                e.preventDefault();
+                props.authenticate({ email: values.email, password: values.password });
+            }
+        };
+        document.addEventListener('keydown', handleKeyDown);
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [values]);
+
     const handleChange = prop => event => {
         setValues({...values, [prop]: event.target.value});
     };
@@ -91,6 +103,11 @@ const Login = (props) => {
                             Sign up
                         </Button>
                     </Typography>
+                    {!!props.error && (
+                        <Typography color="textSecondary" align="center">
+                            {props.error}
+                        </Typography>
+                    )}
                     <Divider variant="middle" className={classes.divider}/>
                     <TextField
                         label="Email"

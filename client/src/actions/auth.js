@@ -1,4 +1,4 @@
-import {AUTHENTICATION, REGISTER} from "../constants";
+import {AUTHENTICATION, REGISTER, LOGOUT} from "../constants";
 import PlextracSDK from "../util/PlextracSDK";
 
 export const authenticate = (user) => {
@@ -35,4 +35,10 @@ export const register = (user) => {
             });
         }
     }
+};
+
+export const logout = () => {
+    return (dispatch) => {
+        dispatch({ type: LOGOUT.success })
+    };
 };

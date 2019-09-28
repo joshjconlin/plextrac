@@ -1,4 +1,4 @@
-import {AUTHENTICATION, REGISTER} from "../constants";
+import {AUTHENTICATION, LOGOUT, REGISTER} from "../constants";
 
 const defaultState = {
     authenticated: false,
@@ -45,6 +45,9 @@ export default (state = defaultState, action) => {
                 error: action.payload.error,
                 loading: false,
             };
+
+        case LOGOUT.success:
+            return defaultState;
 
         default:
             return state
