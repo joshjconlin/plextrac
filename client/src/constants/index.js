@@ -11,3 +11,4 @@ export const REGISTER = createActionTypes('REGISTER');
 export const LOGOUT = createActionTypes('LOGOUT');
 
 export const GET_WEATHER = createActionTypes('GET_WEATHER');
+export const CREATE_LOCATION = createActionTypes('CREATE_LOCATION');

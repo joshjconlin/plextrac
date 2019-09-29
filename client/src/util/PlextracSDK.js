@@ -22,6 +22,10 @@ class PlextracSDK extends ApiService {
     async getMyWeather() {
         return this.get(`/me/weather`);
     }
+
+    async createLocation(location) {
+        return this.post(`/locations`, location);
+    }
 }
 
 export default new PlextracSDK();

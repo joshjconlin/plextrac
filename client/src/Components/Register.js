@@ -103,10 +103,9 @@ const Register = (props) => {
             <Card className={classes.card}>
                 <CardContent>
                     <Typography variant="h5" className={classes.typography}>
-                        Sign Up /
                         <Button href="/">
                             Login
-                        </Button>
+                        </Button> / Sign Up
                     </Typography>
                     <Divider variant="middle" className={classes.divider}/>
                     {!!props.error && (

@@ -30,9 +30,8 @@ const TopBar = (props) => {
                 </Typography>
                 {props.isAuthenticated && (
                     <IconButton
-                        aria-label="account of current user"
+                        aria-label="logout"
                         aria-controls="menu-appbar"
-                        aria-haspopup="true"
                         onClick={props.logout}
                         color="inherit"
                     >

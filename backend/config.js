@@ -18,7 +18,7 @@ const config = {
             $default: 8080
         },
     },
-    mongo: "mongodb://localhost/plextrac",
+    mongo: "mongodb://mongodb:27017",
     secret: "supersecuresecret",
     apiKey: "620d2153191e66ac1a101a72315f1754"
 };
